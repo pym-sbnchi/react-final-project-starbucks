@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subcategories",
+  "info": {
+    "singularName": "subcategory",
+    "pluralName": "subcategories",
+    "displayName": "subcategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "subsubcategories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subsubcategory.subsubcategory"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "subcategory"
+    }
+  }
+}
