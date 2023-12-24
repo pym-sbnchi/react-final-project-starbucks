@@ -713,6 +713,28 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiLogoLogo extends Schema.CollectionType {
+  collectionName: 'logos';
+  info: {
+    singularName: 'logo';
+    pluralName: 'logos';
+    displayName: 'logo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logo: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::logo.logo', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::logo.logo', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -886,6 +908,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::category.category': ApiCategoryCategory;
+      'api::logo.logo': ApiLogoLogo;
       'api::product.product': ApiProductProduct;
       'api::slide.slide': ApiSlideSlide;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;

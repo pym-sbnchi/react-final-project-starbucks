@@ -9,11 +9,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { Link } from "react-router-dom";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
-import './index.css'
+import "./style.css";
+import { Divider, Stack } from "@mui/material";
+
 const pages = ["Menu", "Rewards", "GiftCards"];
-const settings = ["Find Store", "Login", "Join Now"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -33,6 +33,13 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const [logo, setLogo] = React.useState();
+  React.useEffect(() => {
+    fetch(process.env.REACT_APP_BASE_API + "logos?populate=*")
+      .then((res) => res.json())
+      .then((logo) => setLogo(logo.data[0]));
+  }, []);
+  console.log(logo)
 
   return (
     <AppBar
@@ -49,7 +56,16 @@ function ResponsiveAppBar() {
         <Toolbar>
           {/* logo */}
           <Box sx={{ width: "100px" }}>
-            <img style={{ width: "100%" }} src="./Starbucks-Logo.png" alt="" />
+            <Typography component="a" href="/">
+              <img
+                style={{ width: "100%" }}
+                src={
+                  process.env.REACT_APP_BASE_URL +
+                  logo?.attributes?.logo?.data?.attributes?.url
+                }
+                alt=""
+              />
+            </Typography>
           </Box>
 
           {/* main navbar */}
@@ -59,6 +75,15 @@ function ResponsiveAppBar() {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "black", display: "block" }}
+                href={
+                  page === "Menu"
+                    ? "/menu"
+                    : page === "Rewards"
+                    ? "/rewards"
+                    : page === "GiftCards"
+                    ? "/gift"
+                    : page.toLowerCase()
+                }
               >
                 {page}
               </Button>
@@ -121,7 +146,22 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography
+                    textAlign="center"
+                    style={{ textDecoration: "none", color: "black" }}
+                    component="a"
+                    href={
+                      page === "Menu"
+                        ? "/menu"
+                        : page === "Rewards"
+                        ? "/rewards"
+                        : page === "GiftCards"
+                        ? "/gift"
+                        : page.toLowerCase()
+                    }
+                  >
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
               <Box
@@ -130,6 +170,8 @@ function ResponsiveAppBar() {
                   borderTop: 1,
                   mb: 2,
                   borderColor: "grey.500",
+                  width: "90%",
+                  mx: "auto",
                 }}
               ></Box>
               <Box sx={{ display: { xs: "flex", md: "none" } }}>
@@ -140,7 +182,7 @@ function ResponsiveAppBar() {
                 <Button
                   href="/login"
                   variant="outlined"
-                  sx={{ borderRadius: "20px", color: "black", mx: "20px" }}
+                  sx={{ borderRadius: "20px", color: "black", mx: "15px" }}
                   color="inherit"
                 >
                   sign in
@@ -152,6 +194,7 @@ function ResponsiveAppBar() {
                     borderRadius: "20px",
                     color: "white",
                     bgcolor: "black",
+                    mr: "10px",
                   }}
                 >
                   Join now

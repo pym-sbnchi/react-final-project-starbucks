@@ -84,6 +84,29 @@ export default function Home() {
             <img src="./Starbucks-Logo.png" className="loader" />
           </Box>
         )}
+        <Box sx={{textAlign:'center', padding:'40px 0'}}>
+          <Typography component="p">
+            *At participating stores. Offer applies to drinks prepared by
+            baristas, including coffee and tea. Limit one drink per member.
+            Cannot be combined with other offers or promotions. This offer is
+            exclusive to you and this Starbucks Rewards account and cannot be
+            reproduced, transferred or used by anyone else.
+          </Typography>
+          <Typography component="p" style={{margin:'100px'}}>
+            **NO PURCHASE NECESSARY. Participating stores only. Starbucks
+            Partners (employees) are not eligible to win prizes. Ends 12/31/23.
+            To play and for Official Rules, visit
+            https://www.starbucksforlife.com/.
+          </Typography>
+          <Typography component="p">
+            ***Valid through 12/25 at participating stores. Offer good on
+            Starbucks Reserve® Christmas 2023; excludes other Starbucks Reserve®
+            coffees and nonseasonal packaged coffees, purchases of Starbucks
+            Cards and Starbucks Card reloads, and nonseasonal merchandise
+            collections. Cannot be combined with other offers or discounts.
+            Limited to stock on hand.
+          </Typography>
+        </Box>
       </Stack>
     </>
   );
