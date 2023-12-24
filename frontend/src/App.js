@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 import Navbar from "./Components/Navbar";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Menu from "./Pages/Menu";
 import Rewards from "./Pages/Rewards";
@@ -10,9 +10,11 @@ import FindStore from "./Pages/FindStore";
 import Login from "./Pages/Login";
 import JoinNow from "./Pages/JoinNow";
 import Footer from "./Components/Footer";
-
+import { useSelector } from "react-redux";
 
 export default function App() {
+  const {token} = useSelector((state) => state.auth);
+
   return (
     <>
       <Navbar />
@@ -23,7 +25,7 @@ export default function App() {
           <Route path="/rewards" element={<Rewards />} />
           <Route path="/gift" element={<GiftCards />} />
           <Route path="/find-store" element={<FindStore />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={token?<Navigate to={'/menu'}></Navigate>:<Login />} />
           <Route path="/join" element={<JoinNow />} />
         </Routes>
       </BrowserRouter>
