@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import SidebarCategories from "./SidebarCategories";
-import { useState } from "react";
 import MenuItems from "./MenuItems";
 import { Box } from "@mui/material";
 
@@ -15,8 +14,12 @@ export default function Menu() {
           gap: "20px",
         }}
       >
-        <SidebarCategories />
-        <MenuItems />
+        <Box>
+          <SidebarCategories />
+        </Box>
+        <Box sx={{flexGrow:1}}>
+          <MenuItems />
+        </Box>
       </Box>
     </>
   );

@@ -26,7 +26,7 @@ export default function SidebarCategories() {
         return (
           <li key={index}>
             <Typography
-              href={`/`}
+              href={`/subsubcategories/${x?.id}`}
               component="a"
               style={{ textDecoration: "none", paddingTop: "10px" }}
               color="GrayText"
@@ -40,7 +40,7 @@ export default function SidebarCategories() {
   ));
   return (
     <>
-      <Box>
+      <Box sx={{display:{xs:'none' , md:'flex'}}}>
         <ul style={{ listStyleType: "none", width: "100%" }}>
           {categoriesItems}
         </ul>

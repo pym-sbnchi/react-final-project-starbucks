@@ -695,6 +695,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::subcategory.subcategory'
     >;
+    subcategoryImages: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -836,6 +837,11 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       'api::subcategory.subcategory',
       'oneToMany',
       'api::product.product'
+    >;
+    category: Attribute.Relation<
+      'api::subcategory.subcategory',
+      'manyToOne',
+      'api::category.category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

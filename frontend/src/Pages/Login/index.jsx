@@ -7,8 +7,23 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-
+import { useDispatch } from "react-redux";
+import useFormFields from "../../utils/useFormFields";
+import axios from "axios";
+import { login } from "../../store/Slices/AuthSlice";
 export default function Login() {
+  const dispatch = useDispatch();
+  const [fields, handleChange] = useFormFields();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(process.env.REACT_APP_BASE_API + "auth/local", fields)
+      .then((res) => {
+        alert("login Successfully");
+        dispatch(login({ user: res.data.user, token: res.data.jwt }));
+      })
+      .catch((err) => alert(err));
+  };
   return (
     <>
       <Typography
@@ -37,9 +52,19 @@ export default function Login() {
             display: "flex",
             gap: "25px",
           }}
+          onSubmit={handleSubmit}
         >
-          <TextField label="Username or email address" required />
-          <TextField label="Password" type="password" required />
+          <TextField
+            label="Username or email address"
+            required
+            onChange={handleChange}
+          />
+          <TextField
+            label="Password"
+            type="password"
+            required
+            onChange={handleChange}
+          />
           <Button
             sx={{ width: "100px", borderRadius: "20px" }}
             variant="contained"

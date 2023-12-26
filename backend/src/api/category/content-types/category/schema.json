@@ -18,7 +18,19 @@
     "subcategories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::subcategory.subcategory"
+      "target": "api::subcategory.subcategory",
+      "mappedBy": "category"
+    },
+    "subcategoryImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

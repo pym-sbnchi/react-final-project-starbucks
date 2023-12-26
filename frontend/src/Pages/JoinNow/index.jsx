@@ -1,4 +1,6 @@
-import React from "react";
+import * as React from "react";
+import useFormFields from "../../utils/useFormFields";
+import axios from "axios";
 import {
   Box,
   Button,
@@ -9,6 +11,14 @@ import {
 } from "@mui/material";
 
 export default function JoinNow() {
+  const [fields, handleChange] = useFormFields();
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    axios.post(process.env.REACT_APP_BASE_API +'auth/local/register',fields)
+    .then(res=>{
+      alert('register successfully')
+    }).catch('something wrong')
+  }
   return (
     <>
       <Typography
@@ -37,6 +47,7 @@ export default function JoinNow() {
             display: "flex",
             gap: "25px",
           }}
+          onSubmit={handleSubmit}
         >
           <Typography
             sx={{ fontWeight: "bold", fontSize: "h6.fontSize" }}
@@ -44,8 +55,8 @@ export default function JoinNow() {
           >
             Personal Information
           </Typography>
-          <TextField label="First name" required />
-          <TextField label="Last name" required />
+          <TextField label="First name" required onChange={handleChange}/>
+          <TextField label="Last name" required onChange={handleChange}/>
           <Typography
             sx={{ fontWeight: "bold", fontSize: "h6.fontSize" }}
             component="p"
@@ -56,12 +67,14 @@ export default function JoinNow() {
             label="Email address"
             helperText="This will be your username"
             required
+            onChange={handleChange}
           />
           <TextField
             label="Password"
             type="password"
             helperText="Create a password 8 to 25 characters long that includes at least 1 uppercase and 1 lowercase letter, 1 number and 1 special character like an exclamation point or asterisk."
             required
+            onChange={handleChange}
           />
           <Button
             sx={{ width: "200px", borderRadius: "20px" }}
