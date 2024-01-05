@@ -39,7 +39,6 @@ function ResponsiveAppBar() {
       .then((res) => res.json())
       .then((logo) => setLogo(logo.data[0]));
   }, []);
-  console.log(logo)
 
   return (
     <AppBar

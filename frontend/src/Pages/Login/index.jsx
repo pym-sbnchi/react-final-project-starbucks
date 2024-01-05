@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  FormGroup,
   Paper,
   TextField,
   Typography,
@@ -45,23 +44,30 @@ export default function Login() {
           width: { xs: "100%", md: "60%" },
         }}
       >
-        <FormGroup
+        <Box
+          component='form'
+          onSubmit={handleSubmit}
           sx={{
             margin: "auto",
             width: { xs: "90%", md: "50%" },
             display: "flex",
+            flexDirection:'column',
             gap: "25px",
           }}
-          onSubmit={handleSubmit}
         >
           <TextField
-            label="Username or email address"
+            label="email address"
+            autoComplete="email"
+            id="email"
+            name="identifier"
             required
             onChange={handleChange}
           />
           <TextField
             label="Password"
             type="password"
+            id="password"
+            name="password"
             required
             onChange={handleChange}
           />
@@ -72,7 +78,7 @@ export default function Login() {
           >
             Sign in
           </Button>
-        </FormGroup>
+        </Box>
       </Paper>
       <Box sx={{ textAlign: "center" }}>
         <Button

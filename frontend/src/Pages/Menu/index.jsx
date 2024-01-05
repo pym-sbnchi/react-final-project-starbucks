@@ -17,7 +17,7 @@ export default function Menu() {
         <Box>
           <SidebarCategories />
         </Box>
-        <Box sx={{flexGrow:1}}>
+        <Box sx={{ flexGrow: 1 }}>
           <MenuItems />
         </Box>
       </Box>

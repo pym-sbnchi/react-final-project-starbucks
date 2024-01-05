@@ -12,6 +12,7 @@ import JoinNow from "./Pages/JoinNow";
 import Footer from "./Components/Footer";
 import { useSelector } from "react-redux";
 import ProductMenu from "./Pages/Menu/ProductMenu";
+import ProductDetails from "./Pages/ProductDetails";
 
 export default function App() {
   const {token} = useSelector((state) => state.auth);
@@ -28,7 +29,8 @@ export default function App() {
           <Route path="/find-store" element={<FindStore />} />
           <Route path="/login" element={token?<Navigate to={'/menu'}></Navigate>:<Login />} />
           <Route path="/join" element={<JoinNow />} />
-          <Route path="/subsubcategories/:id" element={<ProductMenu/>}/>
+          <Route path="/products/:id" element={<ProductMenu/>}/>
+          <Route path="/product-details/:id" element={<ProductDetails/>}/>
         </Routes>
       </BrowserRouter>
       <Footer />

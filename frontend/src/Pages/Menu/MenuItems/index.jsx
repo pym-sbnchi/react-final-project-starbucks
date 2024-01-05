@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 
 export default function MenuItems() {
   const [categories, setCategories] = useState();
-  const [subcategories, setSubcategories] = useState();
 
   useEffect(() => {
     fetch(process.env.REACT_APP_BASE_API + "categories?populate=*")
@@ -11,33 +10,72 @@ export default function MenuItems() {
       .then((data) => setCategories(data.data));
   }, []);
 
-  useEffect(() => {
-    fetch(process.env.REACT_APP_BASE_API + "subcategories?populate=*")
-      .then((res) => res.json())
-      .then((data) => setSubcategories(data.data));
-  }, []);
-  const subcategoriesItems = subcategories?.map((e, index) => (
+  const categoriesItems = categories?.map((e, index) => (
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
         gap: "15px",
-        alignItems: "center",
+        alignItems: "flex-start",
         padding: "15px",
       }}
     >
-      <img
+      <Typography
         key={index}
-        src={
-          process.env.REACT_APP_BASE_URL +
-          e?.attributes.image.data.attributes.url
-        }
-        alt=""
-        style={{ width: "100px", borderRadius: "50%" }}
-      />
-      <Typography key={index} component="p">
+        component="p"
+        variant="h4"
+        sx={{ borderBottom: 1 }}
+      >
         {e?.attributes.title}
       </Typography>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            md: "repeat(2, 1fr)",
+            xs: "repeat(1, 1fr)",
+          },
+          justifyContent: "center",
+          alignItems: "center",
+          gridColumnGap: "100px",
+          gridRowGap: "25px",
+          paddingY: "20px",
+        }}
+      >
+        {e?.attributes.subcategories.data.map((x, index) => {
+          return (
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: {
+                  md: "repeat(2, 1fr)",
+                  xs: "repeat(1, 1fr)",
+                },
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "25px",
+                textDecoration: "none",
+                color: "black",
+              }}
+              component="a"
+              href={`/products/${x?.id}`}
+            >
+              <img
+                key={index}
+                src={
+                  process.env.REACT_APP_BASE_URL +
+                  e?.attributes.subcategoryImages.data[index].attributes.url
+                }
+                alt=""
+                style={{ width: "100px", borderRadius: "50%" }}
+              />
+              <Typography key={index} component="p">
+                {x?.attributes.title}
+              </Typography>
+            </Box>
+          );
+        })}
+      </Box>
     </Box>
   ));
   return (
@@ -45,13 +83,11 @@ export default function MenuItems() {
       <Box
         sx={{
           width: "750px",
-          display: "grid",
-          gridTemplateColumns: { md: "repeat(2, 1fr)", xs: "repeat(1, 1fr)" },
           margin: "auto",
         }}
       >
-        {subcategories ? (
-          subcategoriesItems
+        {categories ? (
+          categoriesItems
         ) : (
           <Box
             style={{

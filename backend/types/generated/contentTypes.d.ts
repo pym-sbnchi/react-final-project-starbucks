@@ -843,6 +843,7 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       'manyToOne',
       'api::category.category'
     >;
+    productMenuImage: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
