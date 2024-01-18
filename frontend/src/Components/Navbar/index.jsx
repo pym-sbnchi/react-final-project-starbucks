@@ -14,7 +14,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "./style.css";
 import { Badge, Divider, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/Slices/AuthSlice";
 
 const pages = ["Menu", "Rewards", "GiftCards"];
 
@@ -22,6 +23,8 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const cartLength = useSelector((state) => state.cart.list).length;
+  const { token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -99,14 +102,26 @@ function ResponsiveAppBar() {
               <FmdGoodIcon />
               Find a Store
             </Button>
-            <Button
-              href="/login"
-              variant="outlined"
-              sx={{ borderRadius: "20px", color: "black", mx: "20px" }}
-              color="inherit"
-            >
-              sign in
-            </Button>
+            {token ? (
+              <Button
+                onClick={() => dispatch(logout())}
+                variant="outlined"
+                sx={{ borderRadius: "20px", color: "black", mx: "20px" }}
+                color="inherit"
+              >
+                Log out
+              </Button>
+            ) : (
+              <Button
+                href="/login"
+                variant="outlined"
+                sx={{ borderRadius: "20px", color: "black", mx: "20px" }}
+                color="inherit"
+              >
+                sign in
+              </Button>
+            )}
+
             <Button
               href="/join"
               variant="contained"

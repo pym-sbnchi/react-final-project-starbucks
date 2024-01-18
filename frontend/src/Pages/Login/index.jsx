@@ -75,6 +75,7 @@ export default function Login() {
             sx={{ width: "100px", borderRadius: "20px" }}
             variant="contained"
             color="success"
+            type="submit"
           >
             Sign in
           </Button>

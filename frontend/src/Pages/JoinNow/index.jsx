@@ -7,12 +7,13 @@ export default function JoinNow() {
   const [fields, handleChange] = useFormFields();
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('hi')
     axios
       .post(process.env.REACT_APP_BASE_API + "auth/local/register", fields)
       .then((res) => {
         alert("register successfully");
       })
-      .catch(alert("something wrong"));
+      .catch(err=>alert('something wrong'));
   };
   return (
     <>
@@ -57,7 +58,6 @@ export default function JoinNow() {
             id="fullname"
             name="fullname"
             required
-            onChange={handleChange}
           />
           <TextField
             label="User name"
@@ -96,6 +96,7 @@ export default function JoinNow() {
             sx={{ width: "200px", borderRadius: "20px" }}
             variant="contained"
             color="success"
+            type="submit"
           >
             Create account
           </Button>
