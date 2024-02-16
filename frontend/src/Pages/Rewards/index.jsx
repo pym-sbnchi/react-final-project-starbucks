@@ -20,7 +20,11 @@ export default function Rewards() {
       justifyContent="center"
       alignItems="center"
       backgroundColor="#d4e9e2"
-      height={290}
+      sx={{
+        flexDirection: { xs: "column", md: "row" },
+        height: { xs: "350px", md: "290px" },
+        pb: { xs: "30px", md: "0" },
+      }}
       key={index}
     >
       <Box>
@@ -34,7 +38,13 @@ export default function Rewards() {
           alt=""
         />
       </Box>
-      <Box display="flex" flexDirection="column" width="400px" gap={3}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        sx={{ textAlign: { xs: "center", md: "left" } }}
+        width="400px"
+        gap={3}
+      >
         <Typography variant="p" key={index} fontWeight="bold" fontSize="25px">
           {e?.attributes.title}
         </Typography>
@@ -108,7 +118,13 @@ export default function Rewards() {
             Earn Stars and get rewarded in a few easy steps.
           </Typography>
         </Box>
-        <Box display="flex" justifyContent="center" gap={8} m={8}>
+        <Box
+          display="flex"
+          sx={{ flexDirection: { xs: "column", md: "row" } }}
+          justifyContent="center"
+          gap={8}
+          m={8}
+        >
           <Box
             display="flex"
             flexDirection="column"
@@ -305,7 +321,13 @@ export default function Rewards() {
             <br /> hello to easy ordering, tasty Rewards and—yes, free coffee.
           </Typography>
         </Box>
-        <Box display="flex" justifyContent="center" gap={8} m={8}>
+        <Box
+          display="flex"
+          sx={{ flexDirection: { xs: "column", md: "row" } }}
+          justifyContent="center"
+          gap={8}
+          m={8}
+        >
           <Box
             display="flex"
             flexDirection="column"
@@ -385,7 +407,8 @@ export default function Rewards() {
         <Box display="flex" flexDirection="column" px={10} pt={10}>
           <Box
             display="flex"
-            flexDirection="row"
+            sx={{ flexDirection: { xs: "column", md: "row" } }}
+            gap={5}
             borderBottom="1px solid lightgray"
           >
             <Box display="flex" flexDirection="column" flexGrow="1">
@@ -394,7 +417,13 @@ export default function Rewards() {
               </Typography>
               <Typography variant="p">Pay as you go</Typography>
             </Box>
-            <Box display="flex" flexDirection="row" flexGrow="2" gap={3}>
+            <Box
+              display="flex"
+              flexDirection="row"
+              sx={{ flexDirection: { xs: "column", md: "row" } }}
+              flexGrow="2"
+              gap={3}
+            >
               <Box display="flex" flexDirection="row" gap={3}>
                 <Box>
                   <img width="112px" src="./assets/1A.png" alt="" />
@@ -425,14 +454,27 @@ export default function Rewards() {
               </Box>
             </Box>
           </Box>
-          <Box display="flex" flexDirection="row" pt={10} pb={5}>
+          <Box
+            display="flex"
+            sx={{ flexDirection: { xs: "column", md: "row" } }}
+            gap={5}
+            flexDirection="row"
+            pt={10}
+            pb={5}
+          >
             <Box display="flex" flexDirection="column" flexGrow="1">
               <Typography variant="p" fontSize="20px" fontWeight="bold">
                 2★Star per dollar
               </Typography>
               <Typography variant="p">Add funds in the app</Typography>
             </Box>
-            <Box display="flex" flexDirection="row" flexGrow="2" gap={3}>
+            <Box
+              display="flex"
+              flexDirection="row"
+              sx={{ flexDirection: { xs: "column", md: "row" } }}
+              flexGrow="2"
+              gap={3}
+            >
               <Box display="flex" flexDirection="row" gap={3}>
                 <Box>
                   <img width="112px" src="./assets/2A.png" alt="" />
@@ -468,15 +510,23 @@ export default function Rewards() {
       </Box>
       <Box
         sx={{
-          backgroundImage: "url(./assets/844262945b2a8b8cfb293156e2583872.png)",
+          backgroundImage: {
+            xs: "none",
+            md: "url(./assets/844262945b2a8b8cfb293156e2583872.png)",
+          },
           backgroundPosition: "cover",
           backgroundRepeat: "no-repeat",
-          padding: "30px",
+          padding: { xs: "0", md: "30px" },
         }}
       >
-        <Box bgcolor="#d9e8e2" display="flex" flexDirection="row">
+        <Box
+          bgcolor="#d9e8e2"
+          display="flex"
+          flexDirection="row"
+          padding={{ xs: "50px", md: "0" }}
+        >
           <Box
-            display="flex"
+            display={{ xs: "none", md: "flex" }}
             alignItems="center"
             justifyContent="center"
             mx={10}
@@ -523,7 +573,7 @@ export default function Rewards() {
             </Button>
           </Box>
           <Box
-            display="flex"
+            display={{ xs: "none", md: "flex" }}
             alignItems="center"
             justifyContent="center"
             mx={10}
@@ -533,6 +583,150 @@ export default function Rewards() {
               src="./assets/b7e1b20df72e802cb1cf0e97e8fe21d0.svg"
               alt=""
             />
+          </Box>
+        </Box>
+      </Box>
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap={4}
+        padding={{ md: "100px 96px", xs: "30px" }}
+      >
+        <Typography variant="p" fontWeight="bold" fontSize="30px">
+          Questions?
+        </Typography>
+        <Typography variant="p" fontSize="18px" lineHeight={2}>
+          We want to help in any way we can. You can ask your barista anytime or
+          we’ve
+          <br /> answered the most commonly asked questions right over here.
+        </Typography>
+      </Box>
+      <Box p={5} bgcolor="#f9f9f9">
+        <Box display="flex" flexDirection="column" gap={1} fontSize="13px">
+          <Typography variant="p">
+            At participating stores. Restrictions apply.
+          </Typography>
+          <Typography variant="p" lineHeight={2}>
+            <sup>1</sup>Excludes taxes and gratuities. At participating stores.
+            Some restrictions apply. Flights purchased close to departure may
+            not earn double Stars. Stars and miles may not be earned on
+            purchases of alcohol, Starbucks Cards and Starbucks Card reloads.
+            For details, visit{" "}
+            <a
+              target="blank"
+              style={{ color: "green" }}
+              href="https://www.deltastarbucks.com/content/starbucks/en/terms-and-conditions.html"
+            >
+              deltastarbucks.com/terms
+            </a>
+          </Typography>
+          <Typography variant="p" lineHeight={2}>
+            <sup>2</sup>At participating stores only. Some restrictions apply.
+            Linked Card members will earn 2% Cash Back on the full purchase
+            price of every Qualifying Purchase. Extra Star offer excludes taxes
+            and tips. Stars may not be earned on purchases of alcohol or on
+            reloads of Starbucks Cards that are not registered. For details,
+            visit Terms and Conditions. Bank of America, N.A. Member FDIC.
+          </Typography>
+        </Box>
+        <Box
+          my={3}
+          display="grid"
+          gridTemplateColumns={{ xs: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
+          gap={4}
+          fontSize="14px"
+        >
+          <Box display="flex" flexDirection="column" gap={3}>
+            <Typography
+              variant="h3"
+              fontWeight="bold"
+              fontSize="15px"
+              color="#00000094"
+            >
+              EARNING STARS
+            </Typography>
+            <Typography variant="p">
+              Stars cannot be earned on purchases of alcohol, Starbucks Cards or
+              Starbucks Card reloads.
+            </Typography>
+            <Typography variant="p">
+              Earn 1 Star per $1 spent when you scan your member barcode in the
+              app, then pay with cash, credit/debit cards or mobile wallets at
+              participating stores. You can also earn 1 Star per $1 spent when
+              you link a payment method and pay directly through the app.
+            </Typography>
+            <Typography variant="p">
+              Earn 2 Stars per $1 spent when you load funds and pay with your
+              digital Starbucks Card in the app. You can also earn 2 Stars per
+              $1 spent when you pay in-person at a participating store with your
+              registered physical Starbucks Card or scan your member barcode in
+              the app, and then use any physical Starbucks Card (regardless of
+              whether it is registered) to complete the purchase.
+            </Typography>
+          </Box>
+          <Box display="flex" flexDirection="column" gap={3}>
+            <Typography
+              variant="h3"
+              fontWeight="bold"
+              fontSize="15px"
+              color="#00000094"
+            >
+              TERMS OF USE
+            </Typography>
+            <Typography variant="p">
+              For full program details visit
+              <a
+                target="blank"
+                style={{ color: "green" }}
+                href="starbucks.com/rewards/terms"
+              >
+                starbucks.com/rewards/terms
+              </a>
+            </Typography>
+            <Typography variant="p">
+              Starbucks® Rewards benefits are available at participating
+              Starbucks stores. Not all stores have the ability to honor Rewards
+              at this time. Visit the{" "}
+              <a
+                style={{ color: "green" }}
+                href="https://www.starbucks.com/store-locator"
+              >
+                Starbucks Store Locator
+              </a>{" "}
+              and search for locations honoring “Redeem Rewards”.
+            </Typography>
+          </Box>
+          <Box display="flex" flexDirection="column" gap={3}>
+            <Typography
+              variant="h3"
+              fontWeight="bold"
+              fontSize="15px"
+              color="#00000094"
+            >
+              BENEFITS
+            </Typography>
+            <Typography variant="p">
+              Free refills available during same in-store visit only. To qualify
+              for the Birthday Reward, you must have made at least one
+              Star-earning transaction.
+            </Typography>
+          </Box>
+          <Box display="flex" flexDirection="column" gap={3}>
+            <Typography
+              variant="h3"
+              fontWeight="bold"
+              fontSize="15px"
+              color="#00000094"
+            >
+              REDEEMING REWARDS
+            </Typography>
+            <Typography variant="p">
+              Rewards cannot be redeemed for alcoholic beverages or multi-serve
+              items. You pay the difference for any beverage customization over
+              $1 and/or merchandise item over $20. Not all stores honor tiered
+              Rewards. Select stores redeem 200 Stars for free food or drink
+              items only.
+            </Typography>
           </Box>
         </Box>
       </Box>
