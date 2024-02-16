@@ -780,6 +780,38 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
+export interface ApiRewardReward extends Schema.CollectionType {
+  collectionName: 'rewards';
+  info: {
+    singularName: 'reward';
+    pluralName: 'rewards';
+    displayName: 'rewards';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    descriptions: Attribute.Text;
+    image: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::reward.reward',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::reward.reward',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSlideSlide extends Schema.CollectionType {
   collectionName: 'slides';
   info: {
@@ -917,6 +949,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::logo.logo': ApiLogoLogo;
       'api::product.product': ApiProductProduct;
+      'api::reward.reward': ApiRewardReward;
       'api::slide.slide': ApiSlideSlide;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
       'api::subsubcategory.subsubcategory': ApiSubsubcategorySubsubcategory;

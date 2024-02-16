@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rewards",
+  "info": {
+    "singularName": "reward",
+    "pluralName": "rewards",
+    "displayName": "rewards"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "descriptions": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

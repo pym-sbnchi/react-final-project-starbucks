@@ -12,8 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "./style.css";
-import { Badge, Divider, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Badge } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/Slices/AuthSlice";
 
@@ -24,7 +23,7 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const cartLength = useSelector((state) => state.cart.list).length;
   const { token } = useSelector((state) => state.auth);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -80,7 +79,14 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                  "&:hover": { color: "green" },
+                  fontWeight: "bold",
+                  fontSize: "16px",
+                }}
                 href={
                   page === "Menu"
                     ? "/menu"
@@ -125,7 +131,12 @@ function ResponsiveAppBar() {
             <Button
               href="/join"
               variant="contained"
-              sx={{ borderRadius: "20px", color: "white", bgcolor: "black" }}
+              sx={{
+                borderRadius: "20px",
+                color: "white",
+                bgcolor: "black",
+                "&:hover": { backgroundColor: "gray" },
+              }}
             >
               Join now
             </Button>
